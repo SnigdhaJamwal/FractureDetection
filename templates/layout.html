@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang = "en-us">
+	<head>
+        
+		<title>{% block title %} {% endblock %}</title>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}" media="screen"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        
+
+        <style>
+
+            @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+            .nav-link-color {
+                color: rgb(39, 39, 39) !important;
+                font-weight: 300 !important;
+            }
+            #navbar-main, footer {
+                background: linear-gradient(45deg, #23bad5, #23d5d5, #23d5ab) !important; /* #23a6d5, #23d5ab*/
+                background-size: 400% 400%;
+                animation: gradient 15s ease infinite;
+            }
+
+            @keyframes gradient {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            
+            
+        </style>
+
+        {% block custom_style %} {% endblock %}
+  </head>
+
+  <header>
+        <!-- Start of Navbar -->
+        <nav id="navbar-main" class="navbar navbar-expand-lg navbar-dark bg-dark py-4 px-5" style="background:; border-bottom: rgb(136, 136, 136) solid 1px;">  <!-- Background init colour: #1affd1 -->
+            <a class="navbar-brand nav-link-color mr-5" href="{{url_for('home')}}" style="font-size: 1.5rem !important;"><img src="../static/img/fracLab-logo.png" style="max-height: 60px;"></a>
+            
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav ml-auto">
+                {% if session_check() %}
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color" href="{{url_for('uploadImage')}}">Upload Image</a>
+                </li>
+                
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color" href="{{url_for('resultsPage')}}">Results </a>
+                </li>
+
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color" href="{{url_for('previousUploads')}}">Previous Uploads</a>
+                </li>
+
+                <li class="nav-item ml-2">
+                    <a class="nav-link nav-link-color" style="border-right: 1px rgba(39, 39, 39, 0.575) solid; height:40px;"></a>
+                </li>
+
+                {% endif %}
+                <li class="nav-item ml-3 active">
+                    <a class="nav-link nav-link-color" href="{{url_for('home')}}">About <span class="sr-only">(current)</span></a>
+                </li>
+                
+                
+                </ul>
+                <!--
+                <li class="nav-item dropdown ml-3">
+                    <a class="nav-link nav-link-color dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                
+
+                <button class="btn btn-lg my-2 mr-3 my-sm-0" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem ;">Login</button> -->
+                
+                {% if not session_check() %}
+
+                    <!-- Login Button trigger modal -->
+                    <button type="button" class="btn btn-lg my-2 ml-5 mr-3 my-sm-0" id="navbar-signin-btn" data-toggle="modal" data-target="#login" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 30px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+                        <i class="fa fa-sign-in"></i> &nbsp;Sign In
+                    </button>
+                    
+                    <!-- Signup trigger modal -->
+                    <button type="button" class="btn btn-lg my-2 mr-3 my-sm-0" id="navbar-signup-btn" data-toggle="modal" data-target="#login" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 30px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+                        <i class="fa fa-user-plus"></i> &nbsp;Sign Up
+                    </button>
+                
+                {% else %}
+
+                    <a href="/logout"><button type="button" class="btn btn-lg my-2 ml-5 mr-3 my-sm-0" id="navbar-logout-btn" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 30px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+
+                        <i class="fa fa-sign-out"></i> &nbsp;Sign Out
+
+                    </button>
+                    </a>
+                    
+                {% endif %}
+
+                <!-- Modal -->
+                {% if modal_show %}
+                    {{ modal_show|safe }}
+                {% else %}
+                    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+                {% endif %}
+                
+                        <div class="modal-dialog" role="document" style="max-width: 60vw !important;">
+                        <div class="modal-content">
+                            <!-- 
+                            <div style="align-self: normal; padding: 10px 10px 0 0;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+
+                            <h2 class="custom-modal-h2" id="loginLabel">Fill in your Details</h2> -->
+                            <script>
+                            function confirmPassword(){
+                                const cnfrm_pswd = document.getElementById('sign-up-confirm-password');
+                                const pswd = document.getElementById('sign-up-password');
+                                if (document.getElementById('sign-up-password').value == document.getElementById('sign-up-confirm-password').value){
+                                    cnfrm_pswd.classList.remove('is-invalid');
+                                    pswd.classList.remove('is-invalid');
+                                    cnfrm_pswd.classList.add('is-valid');
+                                    pswd.classList.add('is-valid');
+                                    return true;
+                                }
+                                else{
+                                    cnfrm_pswd.classList.remove('is-valid');
+                                    pswd.classList.remove('is-valid');
+                                    cnfrm_pswd.classList.add('is-invalid');
+                                    pswd.classList.add('is-invalid');
+                                    return false;
+                                }
+                            }
+                            </script>
+
+                            <div class="modal-body">
+                                    <div class="custom-modal-container {{ right_panel_active }}" id="custom-container-sign-in">
+                                            <div class="custom-modal-form-container custom-modal-sign-up-container">
+                                                <form class="custom-modal-form" onSubmit="return confirmPassword()" method="POST" action="/signup">
+                                                    <h1 class="custom-modal-h1">Create Account</h1>
+                                                    
+                                                    <div class="form-group" style="width: 100% !important; margin-bottom: 0rem !important;"> 
+                                                    <input class="custom-modal-input form-control" style="height: initial !important;" id="sign-up-name" name="sign-up-name" type="text" placeholder="Name" required/>
+                                                    </div>
+
+                                                    <div class="form-group" style="width: 100% !important; margin-bottom: 0rem !important;"> 
+                                                    <input class="custom-modal-input form-control {{ signupEmailFeedback }}" style="height: initial !important;" id="sign-up-email" name="sign-up-email" type="email" placeholder="Email" required/>
+                                                    <div class="invalid-feedback" style="text-align: left;">
+                                                        {% if signupEmailError == '' %}
+                                                            Invalid email address!
+                                                        {% else %}
+                                                            {{ signupEmailError }}
+                                                        {% endif %}
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="width: 100% !important; margin-bottom: 0rem !important;">
+                                                    <input class="custom-modal-input form-control" style="height: initial !important;" id="sign-up-password" name="sign-up-password" type="password" placeholder="Password" required/>
+                                                    </div>
+                                                    
+                                                    <div class="form-group" style="width: 100% !important; margin-bottom: 0rem !important;">
+                                                    <input class="custom-modal-input form-control" style="height: initial !important;" id="sign-up-confirm-password" name="sign-up-confirm-password" type="password" placeholder="Confirm Password" required/>
+                                                    <div class="invalid-feedback" style="text-align: left;">
+                                                        Passwords do not match!
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="width: 100% !important; margin-bottom: 0rem !important;">
+                                                    <div class="form-check">
+                                                    <input class="custom-modal-input form-control" style="height: initial !important; width: min-content !important;" id="sign-up-tnc" name="sign-up-tnc" type="checkbox" required/>Agree to terms and conditions<br>
+                                                    
+                                                    <div class="invalid-feedback" style="text-align: left;">
+                                                        You must agree!
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                        
+                                                    <button class="custom-modal-button my-3" type="submit">Sign Up</button>
+                                                </form>
+                                            </div>
+                                            <div class="custom-modal-form-container custom-modal-sign-in-container">
+                                                <form class="custom-modal-form" action="/login" method="POST">
+                                                    <h1 class="custom-modal-h1">Sign in</h1>
+                                                    <input class="custom-modal-input" id="sign-in-email" name="sign-in-email" type="email" placeholder="Email" />
+                                                    <input class="custom-modal-input" id="sign-in-password" name="sign-in-password" type="password" placeholder="Password" />
+                                                    <a class="custom-modal-a" href="#">Forgot your password?</a>
+                                                    <button class="custom-modal-button" type="submit">Sign In</button>
+                                                </form>
+                                            </div>
+                                            <div class="custom-modal-overlay-container">
+                                                <div class="custom-modal-overlay">
+                                                    <div class="custom-modal-overlay-panel custom-modal-overlay-left">
+                                                        <h1 class="custom-modal-h1">Welcome Back!</h1>
+                                                        <div class="custom-modal-p">To keep connected with us please login with your personal info</div>
+                                                        <button class="custom-modal-button ghost" id="signIn-sign-in">Sign In</button>
+                                                    </div>
+                                                    <div class="custom-modal-overlay-panel custom-modal-overlay-right">
+                                                        <h1 class="custom-modal-h1">Hello!</h1>
+                                                        <div class="custom-modal-p">Enter your personal details to get started with us</div>
+                                                        <button class="custom-modal-button ghost" id="signUp-sign-in">Sign Up</button>
+                                                        
+                                                        <script>
+                                                        const signUpButton = document.getElementById('signUp-sign-in');
+                                                        const signInButton = document.getElementById('signIn-sign-in');
+                                                        const signUpNavbar = document.getElementById('navbar-signup-btn');
+                                                        const signInNavbar = document.getElementById('navbar-signin-btn');
+                                                        const container = document.getElementById('custom-container-sign-in');
+                                                        
+                                                        signInNavbar.addEventListener('click', () => {
+                                                        container.classList.remove("right-panel-active");
+                                                        });
+                                                            
+                                                        signUpNavbar.addEventListener('click', () => {
+                                                        container.classList.add("right-panel-active");
+                                                        });
+
+                                                        signUpButton.addEventListener('click', () => {
+                                                        container.classList.add("right-panel-active");
+                                                        });
+                                    
+                                                        signInButton.addEventListener('click', () => {
+                                                        container.classList.remove("right-panel-active");
+                                                        });
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- End of Login Modal -->
+                <!-- 
+                <button type="button" class="btn btn-lg my-2 mr-3 my-sm-0" data-toggle="modal" data-target="#registerOld" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 30px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+                    <i class="fa fa-user-plus"></i> &nbsp;Sign Up
+                </button> -->
+                <!-- Old Modal -->
+                <div class="modal fade" id="registerOld" tabindex="-1" role="dialog" aria-labelledby="registerOldLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document" style="background-color: rgba(255, 255, 255); font-size: 20px !important;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="registerOldLabel">Hey buddy! Please register!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                                <form>
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-3">
+                                            <label for="validationServer01">First name</label>
+                                            <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks bad!
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                            <label for="validationServer02">Last name</label>
+                                            <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks bad!
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                            <label for="validationServerUsername">Email</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                <span id="inputGroupPrepend2">
+                                                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Email" required></span>
+                                                <div class="invalid-feedback">
+                                                Please choose a username.
+                                                </div>
+                                                
+                                                <span class="input-group-text" id="inputGroupPrepend3" aria-describedby="inputGroupPrepend2">@</span>
+                                                </div>
+                                                <input type="text" class="form-control is-invalid" id="validationServerHostname" aria-describedby="inputGroupPrepend3" placeholder="Host name" required>
+                                                <div class="invalid-feedback">
+                                                Please choose a username.
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="validationServer03">Password</label>
+                                                <input type="password" class="form-control is-invalid" id="validationServer03" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid password.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="validationServer04">Confirm Password</label>
+                                                <input type="password" class="form-control is-invalid" id="validationServer04" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid password.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                                            <label class="form-check-label" for="invalidCheck3">
+                                                Agree to terms and conditions
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                You must agree before submitting.
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Submit form</button>
+                                        </form>                   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- End of Old Modal -->
+
+
+        </nav>
+        <!-- End of Navbar -->
+</header>
+    
+    
+<body>
+    <div class="container-fluid" style="min-height: 100vh; width: 90%; align-content:center">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" style="margin-right: 10%; margin-left: 10%;" role="alert"> 
+                        {{ message|safe }} 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block body %} {% endblock %}
+
+    </div>
+</body>
+
+<!-- Footer -->
+<footer style="background-color: rgb(26, 255, 209,0.8); border-top: rgb(136, 136, 136) solid 1px;">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center pt-3">Developed by:
+    &nbsp;Swarnava Ghosh, &nbsp; Snigdha Jamwal, &nbsp; Sabarinath V Nair </a>
+    </div>
+    <div class="footer-copyright text-center mt-0 pt-0 pb-3">© 2020 Copyright: FracLab
+</footer>
+<!-- End of Footer -->
+
+</html>

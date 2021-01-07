@@ -1,0 +1,58 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css" media="screen"/>
+</head>
+<body>
+<div class="custom-modal">
+	<h2 class="custom-modal-h2">Fill in your Details</h2>
+	<div class="custom-modal-container" id="custom-container">
+		<div class="custom-modal-form-container custom-modal-sign-up-container">
+			<form class="custom-modal-form" action="#">
+				<h1 class="custom-modal-h1">Create Account</h1>
+				<input class="custom-modal-input" type="text" placeholder="Name" />
+				<input class="custom-modal-input" type="email" placeholder="Email" />
+				<input class="custom-modal-input" type="password" placeholder="Password" />
+				<button class="custom-modal-button">Sign Up</button>
+			</form>
+		</div>
+		<div class="custom-modal-form-container custom-modal-sign-in-container">
+			<form class="custom-modal-form" action="#">
+				<h1 class="custom-modal-h1">Sign in</h1>
+				<input class="custom-modal-input" type="email" placeholder="Email" />
+				<input class="custom-modal-input" type="password" placeholder="Password" />
+				<a class="custom-modal-a" href="#">Forgot your password?</a>
+				<button class="custom-modal-button">Sign In</button>
+			</form>
+		</div>
+		<div class="custom-modal-overlay-container">
+			<div class="custom-modal-overlay">
+				<div class="custom-modal-overlay-panel custom-modal-overlay-left">
+					<h1 class="custom-modal-h1">Welcome Back!</h1>
+					<div class="custom-modal-p">To keep connected with us please login with your personal info</div>
+					<button class="custom-modal-button ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="custom-modal-overlay-panel custom-modal-overlay-right">
+					<h1 class="custom-modal-h1">Hello!</h1>
+					<div class="custom-modal-p">Enter your personal details and start a new experience</div>
+					<button class="custom-modal-button ghost" id="signUp">Sign Up</button>
+					
+					<script>
+					const signUpButton = document.getElementById('signUp');
+					const signInButton = document.getElementById('signIn');
+					const container = document.getElementById('custom-container');
+
+					signUpButton.addEventListener('click', () => {
+					container.classList.add("right-panel-active");
+					});
+
+					signInButton.addEventListener('click', () => {
+					container.classList.remove("right-panel-active");
+					});
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

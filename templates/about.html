@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+
+{% block title %}About Us{% endblock %}
+
+{% block custom_style %}
+	<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../static/css/styles3.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- NumScroll jQuery Plugin -->
+        <script src="../static/js/numscroll.js"></script>
+{% endblock %}
+
+{% block body %}
+		<!-- Home Page: About Us-->
+      <div id="HomePageAboutUs" class="p-4">
+          <h1 class="text-center font-weight-bold my-4 p-5 padding-top-3" >What is S Cube?</h1>
+          <p class="justify-content-center body-text-justify mx-5 p-4 " >
+            S cube is an interactive web application which is aimed to automate fracture detection in a specific long bone of the human body from medical digital X-ray images. We as a team
+			aim to achieve a unified technique for the detection and evaluation of fractures in long-bone digital X-ray image. Image Processing along with Supervised Learning Algorithms is used 
+			to automate the process. Through the web application, the user can upload the digital X-ray images to classify and obtain results.  
+ 
+          </p>
+      </div>
+      
+	    
+		<div id="HomePageAboutDataset" class="p-5">
+          <h1 class="text-center font-weight-bold my-4 padding-top-3" >About the Training Dataset</h1>
+          <p class="justify-content-center body-text-justify mx-5 p-4 " style="text-align: justify !important;">
+            MURA (musculoskeletal radiographs) is a large dataset of bone X-rays. Algorithms are tasked with determining whether an X-ray study is normal or abnormal.
+            Musculoskeletal conditions affect more than 1.7 billion people worldwide, and are the most common cause of severe, long-term pain and disability, with 
+			30 million emergency department visits annually and increasing. MURA is one of the largest public radiographic image datasets and a lot of significant advancements 
+			are taking place in the medical imaging technologies. 
+		</p>
+      </div>
+	  <!-- End of Home Page: About Us-->
+	  
+	  <!-- Home Page: Accuracy Results -->
+      <div id="homePageAccuracy" class="p-4">
+        
+        <!-- Home Page: The numbers -->
+        <div class="container-fluid">
+          <h1 class="text-center font-weight-bold my-4" style="color: rgb(6, 12, 28) !important;">Accuracy Results</h1>
+          
+          <!-- Grid Row -->
+          <div class="row text-center">
+
+            <!-- Grid Columns -->
+            <div class="col-md-10 py-3 text-center mx-auto">
+              <div class="d-flex justify-content-center">
+
+                <!-- Grid Column for Total Productions -->
+                <div class="col-sm-4 my-3 px-2">
+                  <div class="counter">
+                    
+                    <h2 class="count-number brickred-text-gradient display-3 py-4"><span class='numscroller' data-min='1' data-max='400' data-delay='3' data-increment='5'>400</span></h2>
+                    <p class="count-text">Images taken for training purposes</p>
+                  </div>
+                </div>
+                <!-- End of Grid Column for Number of trained  -->
+
+                <!-- Grid Column for Shows Performed -->
+                <div class="col-sm-4 my-3 px-2">
+                  <div class="counter">
+                    
+                    <h2 class="count-number brickred-text-gradient display-3 py-4"><span class='numscroller' data-min='1' data-max='5000' data-delay='6' data-increment='50'>5000</span></h2>
+                    <p class="count-text">Total number of images in the dataset</p>
+                  </div>
+                </div>
+                <!-- End of Grid Column for number of images in the dataset -->
+
+                <!-- Grid Column for Performing Venues -->
+                <div class="col-sm-4 my-3 px-2">
+                  <div class="counter">
+                    
+                    <h2 class="count-number brickred-text-gradient display-3 py-4"><span class='numscroller' data-min='1' data-max='85' data-delay='3' data-increment='3'>85</span></h2>
+                    <p class="count-text">Accuracy Percentage</p>
+                  </div>
+                </div>
+                <!-- End of Grid Column for Accuracy Percentage -->
+              
+              </div>
+            </div>
+            <!-- End of Grid Columns -->
+
+          </div>
+          <!-- End of Grid Row -->
+
+          </div>
+          <!-- End of Container Fluid -->
+
+        </div>
+        <!-- End of Home Page: Accuracy Results -->
+{% endblock %}

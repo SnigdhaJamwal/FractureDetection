@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}Results | {{ session['name'].split(" ",1)[0] }} {% endblock %}
+
+{% block custom_style %} 
+<style>
+
+#uploadThumbnail {
+    object-fit: contain !important;
+    height:280px;
+    width: 280px;
+
+}
+
+</style>
+<!-- NumScroll jQuery Plugin -->
+<script src="../static/js/numscroll.js"></script>
+{% endblock %}
+
+{% block body %}
+        <h1 class="font-weight-light text-center text-lg-left mt-5 mb-0">Results</h1>
+        <hr class="mt-2 mb-4">
+
+        {% if outputImage %}
+        <div class="row text-center text-lg-center">
+        
+            <div class="col-md-6 col-6">
+                <h4>Input Image</h4>
+                <!-- <a href="" target="_blank" class="d-block mb-4 h-100"> -->
+                    <img id="uploadThumbnail" class="img-fluid img-thumbnail" src=" {{inputImage}}" alt="">
+                <!--    </a> -->
+                
+            </div>
+            <div class="col-md-6 col-6">
+                <h4>Output Image</h4>
+                
+                    <img id="uploadThumbnail" class="img-fluid img-thumbnail" src=" {{outputImage}}" alt="">
+                
+            </div>
+        </div>
+
+        <div class="display-3 text-center mt-5" style="font-size: 20px;">
+            <p style="font-size: 25px">Chance of a fracture:</p>
+
+            <p style="font-size: 30px; color:{{outputColor|safe}};" ><span class='numscroller' data-min='0' data-max='{{fractureProbability*100}}' data-delay='3' data-increment='5'></span>%</p>
+            
+            {% if fractureProbability >= 0.6 %}
+            High chance of fracture. Please consult a doctor immediately!
+            {% elif fractureProbability >= 0.5 %}
+            Moderate chance of fracture. You may consult a doctor.
+            {% elif fractureProbability >= 0.4 %}
+            Low chance of fracture. You need not worry much!
+            {% else %}
+            No fracture detected. You need not worry!
+            {% endif %}
+        </div>
+        
+        <hr class="mt-5 pt-5"  style="margin-left: 40%; margin-right: 40%;">
+        {% else %}
+            <div class="text-center display-4" style="font-size: 20px;">
+                No results to show!
+            </div>
+            <hr class="mt-5" style="margin-left: 45%; margin-right: 45%;">
+        {% endif %}
+{% endblock %}

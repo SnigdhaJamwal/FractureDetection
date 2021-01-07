@@ -1,0 +1,5 @@
+.vscode/
+__pychache__/
+venv/
+.DS_Store
+service-account-token.json

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %} S Cube {% endblock %}
+{% block body %}
+
+    <form class="text-center py-5 my-5" method="POST">
+        <input style="margin-top: 2px;" type="email" id="email" name="email" placeholder="Email">
+        <button class="btn btn-sm btn-success" style="margin-top: -5px; margin-left: 10px; background-color: rgb(39, 39, 39);" type="submit">Submit</button>
+    </form>
+    
+    <div class="display-4 text-center pt-3 mt-3" style="font-size: 30px">
+        <p>
+            {{ email_id }} <br> <br>
+            {{ smtp_server_validity }} <br>
+            {{ email_validity }}
+        </p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact Us{% endblock %} 
+
+{% block custom_style %}
+<script> 
+   function valide()                                    
+{ 
+    
+   
+    if (document.forms[0].elements[0].value == "")                                  
+    { 
+        window.alert("Please enter your first name."); 
+        document.forms[0].elements[0].focus(); 
+        return false; 
+    } 
+
+    if (document.forms[0].elements[1].value == "")                                  
+    { 
+        window.alert("Please enter your last name."); 
+        document.forms[0].elements[1].focus(); 
+        return false; 
+    } 
+   
+    if( document.forms[0].elements[2].value.numbers())
+        
+           var numbers = /^[0-9]+$/;
+           if(document.forms[0].elements[2].value.match(numbers))
+        {
+           return true;
+        }
+    else
+       {
+          alert("Phone number must have numeric characters only");
+          document.forms[0].elements[2].focus();
+          return false;
+       }
+
+	   
+	if (document.forms[0].elements[3].value.indexOf("@", 0) < 0)                 
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        document.forms[0].elements[3].focus(); 
+        return false; 
+    } 
+	
+    if (document.forms[0].elements[4].value == "")                                   
+    { 
+        window.alert("Please enter the description."); 
+        document.forms[0].elements[4].focus(); 
+        return false; 
+    }   
+
+    return true; 
+}
+
+</script> 
+
+{% endblock %}
+
+<body background="" text="Black">
+{% block body %}
+<center>
+<body bgcolor = "#00cc7a">
+<h1 style="text-align: center" class="py-5"> Contact Us </h1>           
+<form onsubmit="valide()"> 
+<table border="0">
+<tr> </tr>
+<tr> <td> First Name </td> <td> <input type="text" placeholder="Please enter your first name" size=59></td> </tr>
+<tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr>
+<tr> <td> Last Name </td> <td> <input type="text" placeholder="Please enter your last name" size=59> </td> </tr>
+<tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr>
+<tr> <td> Contact number </td> <td> <input type="text" placeholder="Please enter your 10-Digit contact number" size=59> </td> </tr>
+<tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr>
+<tr> <td> E- mail Address</td> <td> <input type="text" placeholder="Please enter a valid email address" size=59>  </td> </tr>
+<tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr>
+<tr> <td> Description </td> <td> <textarea cols=61 rows=13> </textarea> </td> </tr>
+<tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr><tr> </tr>
+</table>
+</br> </br>
+<input type="submit" class="btn btn-outline-success">  
+<input type="reset" class="btn btn-outline-secondary"> 
+</form>
+
+{% endblock %}

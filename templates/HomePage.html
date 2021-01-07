@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block title %}FracLab | Home {% endblock %}
+
+{% block custom_style %}
+	 
+	<link rel="stylesheet" href="/static/css/styles4.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>	
+	{% if section %}
+<script>
+    $(function() { 
+       location.hash = "{{section}}" 
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+{% block body %}
+<section id= "about">
+<div class="container">
+<div class="row">
+
+<!-- Home Page: About Us-->
+	
+      <div id="HomePageAboutUs" class="p-4 pb-1 body-h1" style="margin-top: 0em; padding-top: 0em !important;">
+          <h1 class="text-center font-weight-bold my-4 p-5 padding-top-3 ">What is FracLab?</h1>
+          <p class="justify-content-center body-text-justify mx-5 p-4 ">
+            FracLab is an interactive web application which is aimed to automate fracture detection in human forearms from medical digital X-ray images. We as a team
+			aim to achieve a unified technique for the detection and evaluation of fractures in long-bone digital X-ray image. Image Processing along with Supervised Learning Algorithms is used 
+			to automate the process. Through the web application, the user can upload the digital X-ray images to classify and obtain results.  
+ 
+          </p>
+      </div>
+      
+	    
+		<div id="HomePageAboutDataset" class="p-5 pb-1 body-h1">
+          <h1 class="text-center font-weight-bold my-4 padding-top-3" >About the Training Dataset</h1>
+          <p class="justify-content-center body-text-justify mx-5 p-4 ">
+            MURA (musculoskeletal radiographs) is a large dataset of bone X-rays. Algorithms are tasked with determining whether an X-ray study is normal or abnormal.
+            Musculoskeletal conditions affect more than 1.7 billion people worldwide, and are the most common cause of severe, long-term pain and disability, with 
+			30 million emergency department visits annually and increasing. MURA is one of the largest public radiographic image datasets and a lot of significant advancements 
+			are taking place in the medical imaging technologies. 
+		</p>
+      </div>
+	  <!-- End of Home Page: About Us-->
+	</div>
+</div>
+</section>
+</div>
+
+	<!----Services---->
+<section id="services">
+
+<h1>Our Services</h1>
+<div class="row services">
+	
+	<div class="col-md-4 text-center">
+		<div class="icon">
+		 <i class="fa fa-paper-plane-o"></i>
+		</div>
+		<h3>Upload Images</h3>
+		<p>Post events for which you need an artists to perform. </p>
+	</div>
+	<div class="col-md-4 text-center">
+		<div class="icon">
+		 <i class="fa fa-handshake-o"></i>
+		</div>
+		<h3>Collaborations</h3>
+		<p>Partner with us to help improve this research project even more.</p>
+	</div>
+	<div class="col-md-4 text-center">
+		<div class="icon">
+		<i class="fa fa-group"></i>
+		</div>
+		<h3>Consultation</h3>
+		<p>Get advise from our experienced doctors.</p>
+		<p>(Coming soon!)</p>
+	</div>
+
+</div>
+</section>
+
+<!------Team Members---->
+<section id="team">
+	<div class="container body-h1">
+		<h1>Our Team</h1>
+		<div class="row" style="padding-left: 80px;">
+			<div class="col-md-3 profile-pic text-center">
+				<div class="img-box">
+					<img src="..\static\img\Swarnava.jpg" class="img-responsive" id="swarnava-img">
+					<ul>
+						<a href="https://www.facebook.com/srv.deepon" target="_blank"><li> <i class="fa fa-facebook"></i></li></a>
+						<a href="https://www.instagram.com/shornabho/" target="_blank"><li> <i class="fa fa-instagram"></i></li></a>
+						<a href="https://www.linkedin.com/in/swarnava-ghosh/" target="_blank"><li> <i class="fa fa-linkedin"></i></li></a>
+					</ul>
+				</div>
+				<h2>Swarnava Ghosh</h2>
+				<h3>Integration and Backend</h3> 
+				<h3>Processing and Training (SVM)</h3>
+				<h3>Front End</h3>
+			</div>
+
+			<div class="col-md-3 profile-pic text-center">
+				<div class="img-box">
+					<img src="..\static\img\Snigdha.jpg" class="img-responsive" id="snigdha-img">
+					<ul>
+						<a href="https://www.facebook.com/snigdha.jamwal.507" target="_blank"><li> <i class="fa fa-facebook"></i></li></a>
+						<a href="https://www.instagram.com/snigdha.jamwal/" target="_blank"><li> <i class="fa fa-instagram"></i></li></a>
+						<a href="https://www.linkedin.com/in/snigdha-jamwal/" target="_blank"><li> <i class="fa fa-linkedin"></i></li></a>
+					</ul>
+				</div>
+				<h2>Snigdha Jamwal</h2>
+				<h3>Image Processing</h3>
+				<h3>Machine Learning</h3>
+			</div>
+
+			<div class="col-md-3 profile-pic text-center">
+				<div class="img-box">
+					<img src="..\static\img\Sabarinath.jpg" class="img-responsive" id="sabarinath-img">
+					<ul>
+						<a href="https://www.facebook.com/profile.php?id=100008399889290" target="_blank"><li> <i class="fa fa-facebook"></i></li></a>
+						<a href="https://www.instagram.com/sabarinath._17/" target="_blank"><li> <i class="fa fa-instagram"></i></li></a>
+						<a href="https://www.linkedin.com/in/sabarinath-nair-97806015b/" target="_blank"><li> <i class="fa fa-linkedin"></i></li></a>
+					</ul>
+				</div>
+				<h2>Sabarinath V Nair</h2>
+				<h3>Front End</h3>
+				<h3>Data Cleaning</h3>	
+			</div>
+		</div>
+	</div>
+</section>
+
+<!------Get in Touch----->
+<section class="contact">
+<div class="container">
+	<h1 class="mb-4" style="text-align: center;"> Get in Touch</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<form class="contact-form">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Your Name">
+					
+					
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control" placeholder="Contact Number">
+					
+					
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email ID">
+					
+					
+				</div>
+				<div class="form-group">
+					<legend><font size =3px>Type your message</font></legend>
+					<textarea rows="4" class="form-control">
+					</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		<div class="col-md-6 contact-info">
+			<div class="follow"><b>Address:</b><i class="fa fa-map-marker"></i>Bangalore
+		   </div>
+		   
+			<div class="follow"><b>Phone:</b><i class="fa fa-phone"></i>+91 9874482004 | +91 9742466244 | +91 9663899498
+		   </div>
+		   
+		
+		
+			<div class="follow"><b>Email:</b><i class="fa fa-envelope-o"></i><br><div style="text-align: center;">swarnava.ghosh@science.christuniversity.in snigdha.jamwal@science.christuniversity.in sabarinath.nair@science.christuniversity.in</div>
+		   </div>
+		   
+		   <div class="follow"><label><b>Get Social:</b></label>
+		   <a href="#"><i class="fa fa-facebook"></i> </a>
+		   <a href="#"><i class="fa fa-youtube-play"></i> </a>
+		   <a href="#"><i class="fa fa-twitter"></i> </a>
+		   <a href="#"><i class="fa fa-google-plus"></i> </a>
+		   </div>
+		  </div> 	
+	</div>
+</div>	
+</section> 
+
+{% endblock %}

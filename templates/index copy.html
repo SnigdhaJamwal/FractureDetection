@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang = "en-us">
+	<head>
+		<title>Fracture Detection</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <style>
+            .nav-link-color {
+                color: rgb(39, 39, 39) !important;
+                
+                font-weight: 300 !important;
+                
+            }
+        </style>
+  </head>
+
+  <header>
+        <!-- Start of Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4 px-5" style="background-color: #1affd1 !important; border-bottom: rgb(39, 39, 39) solid 1px;">
+            <a class="navbar-brand nav-link-color" href="#" style="font-size: 1.5rem !important;">S Cube</a>
+            
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item ml-5 active">
+                    <a class="nav-link nav-link-color" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown ml-3">
+                    <a class="nav-link nav-link-color dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link nav-link-color disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                </ul>
+<!--
+                <button class="btn btn-lg my-2 mr-3 my-sm-0" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem ;">Login</button> -->
+                <!-- Login Button trigger modal -->
+                <button type="button" class="btn btn-lg my-2 mr-3 my-sm-0" data-toggle="modal" data-target="#login" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 3px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+                    Login
+                </button>
+
+                <!-- Login Modal -->
+                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="loginLabel">Hey buddy! Please login!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationServer01">Email Address</label>
+                                        <input type="email" class="form-control" id="validationServer01" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Looks bad!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationServer02">Password</label>
+                                        <input type="password" class="form-control" id="validationServer02" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Looks bad!
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            </form>                   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- End of Login Modal -->
+
+                <!-- Signup trigger modal -->
+                <button type="button" class="btn btn-lg my-2 mr-3 my-sm-0" data-toggle="modal" data-target="#register" style="background-color: rgb(39, 39, 39); color: white; font-size: 0.8rem; border-radius: 3px !important; padding-top: 0.4rem; padding-bottom: 0.5rem;">
+                    Register
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="registerLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="loginLabel">Hey buddy! Please register!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                                <form>
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-3">
+                                            <label for="validationServer01">First name</label>
+                                            <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks bad!
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                            <label for="validationServer02">Last name</label>
+                                            <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks bad!
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                            <label for="validationServerUsername">Email</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                <span id="inputGroupPrepend2">
+                                                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Email" required></span>
+                                                <div class="invalid-feedback">
+                                                Please choose a username.
+                                                </div>
+                                                
+                                                <span class="input-group-text" id="inputGroupPrepend3" aria-describedby="inputGroupPrepend2">@</span>
+                                                </div>
+                                                <input type="text" class="form-control is-invalid" id="validationServerHostname" aria-describedby="inputGroupPrepend3" placeholder="Host name" required>
+                                                <div class="invalid-feedback">
+                                                Please choose a username.
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="validationServer03">Password</label>
+                                                <input type="password" class="form-control is-invalid" id="validationServer03" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid password.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="validationServer04">Confirm Password</label>
+                                                <input type="password" class="form-control is-invalid" id="validationServer04" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid password.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                                            <label class="form-check-label" for="invalidCheck3">
+                                                Agree to terms and conditions
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                You must agree before submitting.
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Submit form</button>
+                                        </form>                   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- End of Signup Modal -->
+
+
+        </nav>
+        <!-- End of Navbar -->
+</header>
+    
+    
+<body>
+        <form class="text-center py-5 my-5" method="POST">
+        <input type="email" id="email" name="email">
+        <button type="submit">Submit</button>
+        </form>
+        <div class="display-4 text-center py-5 my-5" style="font-size: 30px">
+            <p>
+                {{ email_validity }}
+            </p>
+        </div>
+
+        
+  </body>
+</html>

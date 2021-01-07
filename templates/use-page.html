@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% block title %}Upload Image | {{ session['name'].split(" ",1)[0] }} {% endblock %}
+{% block custom_style %}
+<style>
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.image-upload{
+    width: 60%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    float: none;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;   
+}
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<section id="upload-image">
+
+    <h1 class="font-weight-light text-center text-lg-left mt-5 mb-0">Upload Image</h1>
+    <hr class="mt-2 mb-4">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 col-centered">
+
+            <form action="/upload-image" method="POST" enctype="multipart/form-data">
+            
+
+                    <label style="font-size: 20px;" class="font-weight-light">Select Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-outline-secondary btn-file">
+                                Browse… <input type="file" id="imgInp" name="image">
+                            </span>
+                        </span>
+
+                        <input type="text" class="form-control" readonly disabled>
+
+                    </div>
+        
+                    <img id='img-upload' class="image-upload"/>
+                    <br>
+                    <button type="submit" class="btn btn-outline-info mt-5">Upload Image</button>
+
+                    <script>
+                    $(document).ready(function () {
+                            $(document).on('change', '.btn-file :file', function () {
+                                var input = $(this),
+                                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                                input.trigger('fileselect', [label]);
+                            });
+
+                            $('.btn-file :file').on('fileselect', function (event, label) {
+
+                                var input = $(this).parents('.input-group').find(':text'),
+                                    log = label;
+
+                                if (input.length) {
+                                    input.val(log);
+                                } else {
+                                    if (log) alert(log);
+                                }
+
+                            });
+                            function readURL(input) {
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+
+                                    reader.onload = function (e) {
+                                        $('#img-upload').attr('src', e.target.result);
+                                    }
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                            
+                            $("#imgInp").change(function () {
+                                readURL(this);
+                            });
+                        });
+                    
+                    </script>
+                        <script>
+                            document.querySelector('.custom-file-input').addEventListener('change',function(e){
+                              var fileName = document.getElementById("image").files[0].name;
+                              var nextSibling = e.target.nextElementSibling
+                              nextSibling.innerText = fileName
+                            })
+                        </script>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<hr class="mt-5 mb-5" style="margin-left: 45%; margin-right: 45%;">
+</section>
+{% endblock %}
